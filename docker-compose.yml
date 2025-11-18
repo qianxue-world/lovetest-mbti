@@ -2,9 +2,15 @@ version: '3.8'
 
 services:
   mbti-test:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    # Option 1: Build locally (for development)
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    
+    # Option 2: Use pre-built image from DockerHub (for production)
+    # Replace 'your-dockerhub-username' with your actual DockerHub username
+    image: your-dockerhub-username/mbti-personality-test:latest
+    
     container_name: mbti-personality-test
     ports:
       - "80:80"
