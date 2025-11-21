@@ -44,9 +44,9 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
         </div>
       </div>
 
-      <button className="btn" onClick={onStart}>
-        {t('start.button')}
-      </button>
+      <div className="btn" onClick={onStart}>
+        <p>{t('start.button')}</p>
+      </div>
     </div>
   );
 };

@@ -53,13 +53,13 @@ export const QuestionScreen: React.FC<QuestionScreenProps> = ({
         <h2>{questionData.question}</h2>
         <div className="options">
           {questionData.options.map((option, index) => (
-            <button
+            <div
               key={index}
               className="option-btn"
               onClick={() => onAnswer(option.trait)}
             >
               {option.text}
-            </button>
+            </div>
           ))}
         </div>
       </div>

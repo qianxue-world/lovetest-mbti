@@ -2,19 +2,11 @@
   text-align: center;
 }
 
-.result-screen h1 {
-  background: linear-gradient(135deg, #FF6B9D 0%, #FFD93D 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 30px;
-  font-weight: bold;
-  font-size: 1.8em;
-}
+
 
 /* SVG Banner */
 .personality-banner {
-  margin-bottom: 30px;
+  margin-bottom: 0px;
   border-radius: 25px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -30,7 +22,7 @@
 /* 角色展示区 (Fallback) */
 .character-showcase-fallback {
   border-radius: 25px;
-  padding: 40px;
+  padding: 20px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -64,46 +56,78 @@
   letter-spacing: 0.1em;
 }
 
-/* 性格标签 */
-.personality-tags {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 30px;
-}
-
-.tag {
-  color: white;
-  padding: 8px 20px;
-  border-radius: 20px;
-  font-size: 0.9em;
-  font-weight: 600;
-  animation: fadeIn 0.5s;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* 性格描述 */
 .result-description {
   text-align: left;
-  margin: 30px 0;
+  margin: 0px 0;
 }
 
-.personality-name {
-  font-size: 1.8em;
-  margin-bottom: 15px;
-  font-weight: bold;
-  text-align: center;
+/* 大号字母展示 */
+.personality-type-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 20px 0 20px 0;
+}
+
+.personality-letters {
+  font-size: 6.5em;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  animation: letterPop 0.6s ease-out;
+  filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.12));
+  font-family: 'ZCOOL KuaiLe', 'Zhi Mang Xing', 'Long Cang', 'Ma Shan Zheng', 'Varela Round', 'Quicksand', 'Comfortaa', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes letterPop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* 夸夸气泡 */
+.praise-bubble {
+  position: relative;
+  background: linear-gradient(135deg, #FFB6D9 0%, #FF8EC7 50%, #FF6BB5 100%);
+  border-radius: 12px;
+  padding: 18px 35px;
+  animation: bubbleBounce 0.8s ease-out 0.3s both;
+  box-shadow: 0 8px 25px rgba(255, 107, 181, 0.35);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@keyframes bubbleBounce {
+  0% {
+    transform: translateY(-20px) scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(5px) scale(1.05);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.praise-text {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: white;
+  display: block;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .personality-desc {
@@ -111,8 +135,38 @@
   font-size: 1.1em;
   line-height: 1.8;
   text-align: center;
-  margin-bottom: 40px;
-  padding: 0 20px;
+  margin-bottom: 25px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(255, 249, 230, 0.5) 0%, rgba(255, 229, 241, 0.5) 100%);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 水印奖章 - 圆形边框 */
+.personality-desc::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border: 3px solid rgba(255, 107, 157, 0.08);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* 水印奖章 - 皇冠图标 */
+.personality-desc::after {
+  content: '👑';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+  opacity: 0.06;
+  z-index: 0;
 }
 
 /* 生活攻略部分 */
@@ -134,11 +188,25 @@
   font-size: 1.05em;
   line-height: 1.8;
   margin-bottom: 20px;
-  padding: 15px;
+  padding: 15px 20px;
   background: rgba(255, 255, 255, 0.7);
   border-radius: 12px;
-  border-left: 4px solid #FF6B9D;
   white-space: pre-line;
+  width: 88%;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.guide-paragraph:nth-child(odd) {
+  margin-left: 0;
+  margin-right: auto;
+  border-radius: 12px 18px 18px 12px;
+}
+
+.guide-paragraph:nth-child(even) {
+  margin-left: auto;
+  margin-right: 0;
+  border-radius: 18px 12px 12px 18px;
 }
 
 .guide-paragraph:last-child {
@@ -161,51 +229,84 @@
   text-align: center;
 }
 
-.traits-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+/* 特质数据统计 */
+.traits-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
   margin-bottom: 30px;
 }
 
-.trait-card {
+.trait-stat-item {
   background: linear-gradient(135deg, #FFF9E6 0%, #FFE5F1 100%);
-  border: 2px solid #FFD93D;
   border-radius: 15px;
   padding: 20px;
-  text-align: left;
-  transition: all 0.3s;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
 }
 
-.trait-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 20px rgba(255, 107, 157, 0.2);
+.trait-stat-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
-.trait-header {
+.trait-label {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.trait-letter {
-  font-size: 2em;
-  font-weight: bold;
-  line-height: 1;
-}
-
-.trait-name {
-  font-size: 1.1em;
+  gap: 8px;
+  font-size: 1em;
   font-weight: 600;
   color: #333;
 }
 
-.trait-desc {
-  color: #666;
-  font-size: 0.95em;
-  line-height: 1.5;
-  margin: 0;
+.trait-letter-small {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+/* 滑块样式 */
+.trait-slider {
+  position: relative;
+  height: 8px;
+  margin: 10px 0;
+}
+
+.slider-track {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, 
+    rgba(200, 200, 200, 0.3) 0%, 
+    rgba(200, 200, 200, 0.3) 49.5%, 
+    rgba(100, 100, 100, 0.5) 49.5%, 
+    rgba(100, 100, 100, 0.5) 50.5%, 
+    rgba(200, 200, 200, 0.3) 50.5%, 
+    rgba(200, 200, 200, 0.3) 100%
+  );
+  border-radius: 4px;
+}
+
+.slider-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  transition: left 1s ease-out;
+  animation: indicatorPulse 2s ease-in-out infinite;
+  border: 3px solid white;
+}
+
+@keyframes indicatorPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
 }
 
 .btn {
@@ -235,15 +336,19 @@
     font-size: 2.5em;
   }
 
-  .traits-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .personality-name {
-    font-size: 1.5em;
-  }
-
   .character-showcase {
     padding: 30px 20px;
+  }
+
+  .personality-letters {
+    font-size: 5.5em;
+  }
+
+  .praise-bubble {
+    padding: 15px 25px;
+  }
+
+  .praise-text {
+    font-size: 1.1em;
   }
 }

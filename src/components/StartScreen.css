@@ -123,6 +123,7 @@
   transition: all 0.3s;
   box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
   font-weight: 600;
+  font-family: 'ZCOOL KuaiLe', 'Zhi Mang Xing', 'Long Cang', 'Ma Shan Zheng', 'Varela Round', 'Quicksand', 'Comfortaa', inherit;
 }
 
 .btn:hover {

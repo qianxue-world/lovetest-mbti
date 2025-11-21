@@ -52,12 +52,5 @@
   transition: all 0.3s;
   text-align: left;
   font-weight: 500;
-}
-
-.option-btn:hover {
-  background: linear-gradient(135deg, #FF6B9D 0%, #FFD93D 100%);
-  color: white;
-  border-color: #FF6B9D;
-  transform: translateX(10px) scale(1.02);
-  box-shadow: 0 5px 20px rgba(255, 107, 157, 0.4);
+  font-family: 'ZCOOL KuaiLe', 'Zhi Mang Xing', 'Long Cang', 'Ma Shan Zheng', 'Varela Round', 'Quicksand', 'Comfortaa', inherit;
 }

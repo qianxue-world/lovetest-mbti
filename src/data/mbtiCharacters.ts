@@ -27,31 +27,35 @@ export const mbtiCharacters: Record<string, string> = {
   'ESFP': '🎉',   // 表演者 - 派对明星
 };
 
-// MBTI 角色颜色主题
+// MBTI 角色颜色主题 - 莫奈风格
+// NT理性者 - 紫色调（薰衣草田）
+// NF理想者 - 草绿色调（睡莲池塘）
+// SJ守护者 - 蓝绿色调（海景）
+// SP艺术家 - 金色调（日出印象）
 export const mbtiColors: Record<string, { primary: string; secondary: string; gradient: string }> = {
-  // 分析家组 - 紫色系
-  'INTJ': { primary: '#9D5BD2', secondary: '#7B3FA8', gradient: 'linear-gradient(135deg, #9D5BD2 0%, #7B3FA8 100%)' },
-  'INTP': { primary: '#B47AEA', secondary: '#9D5BD2', gradient: 'linear-gradient(135deg, #B47AEA 0%, #9D5BD2 100%)' },
-  'ENTJ': { primary: '#7B3FA8', secondary: '#5A2D7A', gradient: 'linear-gradient(135deg, #7B3FA8 0%, #5A2D7A 100%)' },
-  'ENTP': { primary: '#C8A2FF', secondary: '#B47AEA', gradient: 'linear-gradient(135deg, #C8A2FF 0%, #B47AEA 100%)' },
+  // NT理性者 - 紫色调（薰衣草田、鸢尾花）
+  'INTJ': { primary: '#9D7BC7', secondary: '#7B5FA8', gradient: 'linear-gradient(135deg, #B8A4D9 0%, #9D7BC7 50%, #7B5FA8 100%)' },
+  'INTP': { primary: '#A88FD1', secondary: '#8B73B8', gradient: 'linear-gradient(135deg, #C4B5E3 0%, #A88FD1 50%, #8B73B8 100%)' },
+  'ENTJ': { primary: '#8B6FB5', secondary: '#6F5694', gradient: 'linear-gradient(135deg, #A88FD1 0%, #8B6FB5 50%, #6F5694 100%)' },
+  'ENTP': { primary: '#B39DD6', secondary: '#9D7BC7', gradient: 'linear-gradient(135deg, #D1C4E8 0%, #B39DD6 50%, #9D7BC7 100%)' },
 
-  // 外交家组 - 绿色/青色系
-  'INFJ': { primary: '#4ECDC4', secondary: '#3BA89F', gradient: 'linear-gradient(135deg, #4ECDC4 0%, #3BA89F 100%)' },
-  'INFP': { primary: '#6BCF7F', secondary: '#4ECDC4', gradient: 'linear-gradient(135deg, #6BCF7F 0%, #4ECDC4 100%)' },
-  'ENFJ': { primary: '#44A8FF', secondary: '#3B8FDB', gradient: 'linear-gradient(135deg, #44A8FF 0%, #3B8FDB 100%)' },
-  'ENFP': { primary: '#FFD93D', secondary: '#FFC107', gradient: 'linear-gradient(135deg, #FFD93D 0%, #FFC107 100%)' },
+  // NF理想者 - 草绿色调（睡莲、花园）
+  'INFJ': { primary: '#7CB89D', secondary: '#5E9B7E', gradient: 'linear-gradient(135deg, #9DD4B8 0%, #7CB89D 50%, #5E9B7E 100%)' },
+  'INFP': { primary: '#8BC9A8', secondary: '#6FB08C', gradient: 'linear-gradient(135deg, #A8DCC0 0%, #8BC9A8 50%, #6FB08C 100%)' },
+  'ENFJ': { primary: '#6FAA8E', secondary: '#5A8F75', gradient: 'linear-gradient(135deg, #8BC9A8 0%, #6FAA8E 50%, #5A8F75 100%)' },
+  'ENFP': { primary: '#9DD4B8', secondary: '#7CB89D', gradient: 'linear-gradient(135deg, #B8E6D0 0%, #9DD4B8 50%, #7CB89D 100%)' },
 
-  // 守护者组 - 蓝色系
-  'ISTJ': { primary: '#3B8FDB', secondary: '#2E72B0', gradient: 'linear-gradient(135deg, #3B8FDB 0%, #2E72B0 100%)' },
-  'ISFJ': { primary: '#5BA3E0', secondary: '#3B8FDB', gradient: 'linear-gradient(135deg, #5BA3E0 0%, #3B8FDB 100%)' },
-  'ESTJ': { primary: '#2E72B0', secondary: '#1F5080', gradient: 'linear-gradient(135deg, #2E72B0 0%, #1F5080 100%)' },
-  'ESFJ': { primary: '#44A8FF', secondary: '#5BA3E0', gradient: 'linear-gradient(135deg, #44A8FF 0%, #5BA3E0 100%)' },
+  // SJ守护者 - 蓝绿色调（海景、天空）
+  'ISTJ': { primary: '#6B9FB8', secondary: '#5585A0', gradient: 'linear-gradient(135deg, #8BB8CF 0%, #6B9FB8 50%, #5585A0 100%)' },
+  'ISFJ': { primary: '#7DADC4', secondary: '#6393AA', gradient: 'linear-gradient(135deg, #9BC5D9 0%, #7DADC4 50%, #6393AA 100%)' },
+  'ESTJ': { primary: '#5A8FA8', secondary: '#477590', gradient: 'linear-gradient(135deg, #7DADC4 0%, #5A8FA8 50%, #477590 100%)' },
+  'ESFJ': { primary: '#8BB8CF', secondary: '#6B9FB8', gradient: 'linear-gradient(135deg, #A8CFE3 0%, #8BB8CF 50%, #6B9FB8 100%)' },
 
-  // 探险家组 - 橙色/红色系
-  'ISTP': { primary: '#FFA07A', secondary: '#FF8C5A', gradient: 'linear-gradient(135deg, #FFA07A 0%, #FF8C5A 100%)' },
-  'ISFP': { primary: '#FF8BA7', secondary: '#FF6B9D', gradient: 'linear-gradient(135deg, #FF8BA7 0%, #FF6B9D 100%)' },
-  'ESTP': { primary: '#FF4757', secondary: '#E03A48', gradient: 'linear-gradient(135deg, #FF4757 0%, #E03A48 100%)' },
-  'ESFP': { primary: '#FF6B9D', secondary: '#FF4757', gradient: 'linear-gradient(135deg, #FF6B9D 0%, #FF4757 100%)' },
+  // SP艺术家 - 金色调（日出、麦田）
+  'ISTP': { primary: '#D4A574', secondary: '#B88F5E', gradient: 'linear-gradient(135deg, #E8C9A0 0%, #D4A574 50%, #B88F5E 100%)' },
+  'ISFP': { primary: '#E0B686', secondary: '#C99D6A', gradient: 'linear-gradient(135deg, #F0D4B3 0%, #E0B686 50%, #C99D6A 100%)' },
+  'ESTP': { primary: '#C99D6A', secondary: '#B08554', gradient: 'linear-gradient(135deg, #E0B686 0%, #C99D6A 50%, #B08554 100%)' },
+  'ESFP': { primary: '#E8C9A0', secondary: '#D4A574', gradient: 'linear-gradient(135deg, #F5E0C8 0%, #E8C9A0 50%, #D4A574 100%)' },
 };
 
 // MBTI 角色描述标签

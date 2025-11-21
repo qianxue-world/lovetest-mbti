@@ -314,7 +314,7 @@ function App() {
   // 激活成功，显示正常应用
   return (
     <div className="app" style={getBackgroundStyle()}>
-      <LanguageSwitcher />
+      {/* <LanguageSwitcher /> */}
       <div className="container">
         {screen === 'start' && <StartScreen onStart={handleStart} />}
         {screen === 'question' && (
@@ -327,6 +327,7 @@ function App() {
         {screen === 'result' && (
           <ResultScreen
             personalityType={personalityType}
+            answers={answers}
           />
         )}
         <div className="card-watermark">@潜学天下</div>
