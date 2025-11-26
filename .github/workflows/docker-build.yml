@@ -77,14 +77,14 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            omaticaya/lovetest-mbti:${{ steps.bump_version.outputs.new_version }}
-            omaticaya/lovetest-mbti:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ steps.bump_version.outputs.new_version }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:latest
           labels: |
             org.opencontainers.image.version=${{ steps.bump_version.outputs.new_version }}
             org.opencontainers.image.created=${{ github.event.head_commit.timestamp }}
             org.opencontainers.image.revision=${{ github.sha }}
-          cache-from: type=registry,ref=omaticaya/lovetest-mbti:buildcache
-          cache-to: type=registry,ref=omaticaya/lovetest-mbti:buildcache,mode=max
+          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:buildcache,mode=max
           platforms: linux/amd64,linux/arm64
 
       - name: Update kustomization.yaml
@@ -96,7 +96,7 @@ jobs:
       - name: Update deployment.yaml
         run: |
           NEW_VERSION="${{ steps.bump_version.outputs.new_version }}"
-          sed -i "s|image: omaticaya/lovetest-mbti:.*|image: omaticaya/lovetest-mbti:$NEW_VERSION|g" k8s/deployment.yaml
+          sed -i "s|image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:$NEW_VERSION|g" k8s/deployment.yaml
           echo "Updated deployment.yaml with version $NEW_VERSION"
 
       - name: Commit and push version updates
@@ -120,8 +120,8 @@ jobs:
           echo "✅ **Docker Image Built and Pushed**" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- **Version:** \`$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
-          echo "- **Image:** \`omaticaya/lovetest-mbti:$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
-          echo "- **Latest Tag:** \`omaticaya/lovetest-mbti:latest\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Image:** \`${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:$NEW_VERSION\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Latest Tag:** \`${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:latest\`" >> $GITHUB_STEP_SUMMARY
           echo "- **Commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 📝 Updated Files:" >> $GITHUB_STEP_SUMMARY
