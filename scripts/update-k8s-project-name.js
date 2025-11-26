@@ -333,10 +333,16 @@ commonLabels:
 
 async function main() {
   console.log('🚀 K8s Project Name Updater\n');
-  console.log('This script will update all k8s configuration files with a new project name.');
-  console.log('Format: <prefix>-<subdomain> (e.g., lovetest-nianshang)\n');
   
-  const projectName = await promptUser('Enter the new project name: ');
+  // 从命令行参数获取项目名称
+  let projectName = process.argv[2];
+  
+  // 如果没有提供命令行参数，则交互式询问
+  if (!projectName) {
+    console.log('This script will update all k8s configuration files with a new project name.');
+    console.log('Format: <prefix>-<subdomain> (e.g., lovetest-nianshang)\n');
+    projectName = await promptUser('Enter the new project name: ');
+  }
   
   if (!projectName) {
     console.error('❌ Project name cannot be empty!');
@@ -353,7 +359,7 @@ async function main() {
   const subdomain = extractSubdomain(projectName);
   const host = `${subdomain}.lovetest.com.cn`;
   
-  console.log('\n📝 Configuration Summary:');
+  console.log('📝 Configuration Summary:');
   console.log(`   Project Name: ${projectName}`);
   console.log(`   Namespace: ${projectName}-ns`);
   console.log(`   App Label: ${projectName}`);
@@ -361,12 +367,15 @@ async function main() {
   console.log(`   Host: ${host}`);
   console.log(`   Image: omaticaya/${projectName}:1.0.1`);
   
-  const confirm = await promptUser('\nProceed with these changes? (yes/no): ');
-  
-  if (confirm.toLowerCase() !== 'yes' && confirm.toLowerCase() !== 'y') {
-    console.log('❌ Operation cancelled.');
-    rl.close();
-    process.exit(0);
+  // 如果是通过命令行参数传入，跳过确认环节
+  if (!process.argv[2]) {
+    const confirm = await promptUser('\nProceed with these changes? (yes/no): ');
+    
+    if (confirm.toLowerCase() !== 'yes' && confirm.toLowerCase() !== 'y') {
+      console.log('❌ Operation cancelled.');
+      rl.close();
+      process.exit(0);
+    }
   }
   
   console.log('\n🔄 Updating k8s files...\n');
